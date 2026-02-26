@@ -27,4 +27,12 @@ export class UsersService {
 
     return rows as User[];
   }
+
+  async count(): Promise<number> {
+    const { rows } = await this.db.query(`
+      SELECT COUNT(*) as count FROM users
+    `);
+
+    return parseInt(String((rows[0] as { count: string | number }).count), 10);
+  }
 }

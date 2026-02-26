@@ -16,4 +16,9 @@ export class OrdersController {
   findAll(): Promise<Order[]> {
     return this.ordersService.findAll();
   }
+
+  @Get('count')
+  count(): Promise<number> {
+    return this.ordersService.count();
+  }
 }

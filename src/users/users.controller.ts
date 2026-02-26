@@ -16,4 +16,9 @@ export class UsersController {
   findAll(): Promise<User[]> {
     return this.usersService.findAll();
   }
+
+  @Get('count')
+  count(): Promise<number> {
+    return this.usersService.count();
+  }
 }

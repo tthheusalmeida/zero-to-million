@@ -33,4 +33,12 @@ export class OrdersService {
 
     return rows as Order[];
   }
+
+  async count(): Promise<number> {
+    const { rows } = await this.db.query(`
+      SELECT COUNT(*) as count FROM orders
+    `);
+
+    return parseInt(String((rows[0] as { count: string | number }).count), 10);
+  }
 }

@@ -27,4 +27,12 @@ export class ProductsService {
 
     return rows as Product[];
   }
+
+  async count(): Promise<number> {
+    const { rows } = await this.db.query(`
+      SELECT COUNT(*) as count FROM products
+    `);
+
+    return parseInt(String((rows[0] as { count: string | number }).count), 10);
+  }
 }

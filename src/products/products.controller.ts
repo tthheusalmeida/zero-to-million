@@ -16,4 +16,9 @@ export class ProductsController {
   findAll(): Promise<Product[]> {
     return this.productsService.findAll();
   }
+
+  @Get('count')
+  count(): Promise<number> {
+    return this.productsService.count();
+  }
 }
