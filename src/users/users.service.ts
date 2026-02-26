@@ -7,9 +7,17 @@ import { DatabaseService } from 'src/database/database.service';
 export class UsersService {
   constructor(private readonly db: DatabaseService) {}
 
-  create(cat: CreateUserDto) {
-    console.log(cat);
-    // Query to create on Database
+  async create(user: CreateUserDto): Promise<User> {
+    const { rows } = await this.db.query(
+      `
+      INSERT INTO users (name, email, created_at)
+      VALUES ($1, $2, $3)
+      RETURNING *
+    `,
+      [user.name, user.email, user.created_at],
+    );
+
+    return rows[0] as User;
   }
 
   async findAll(): Promise<User[]> {

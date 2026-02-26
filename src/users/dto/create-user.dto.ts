@@ -1,5 +1,5 @@
 export class CreateUserDto {
   name: string;
   email: string;
-  createdDate: Date;
+  created_at: Date;
 }

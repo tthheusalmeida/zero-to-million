@@ -2,5 +2,5 @@ export class User {
   id: string;
   name: string;
   email: string;
-  createdDate: Date;
+  created_at: Date;
 }
